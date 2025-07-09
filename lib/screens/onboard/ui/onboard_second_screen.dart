@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tasky_app/theming/my_colors.dart';
-import 'package:tasky_app/widgets/onboard_screen_column_widget.dart';
+import 'package:tasky_app/screens/onboard/widgets/onboard_screen_column_widget.dart';
 
 class OnBoardSecondScreen extends StatelessWidget {
   const OnBoardSecondScreen({super.key});

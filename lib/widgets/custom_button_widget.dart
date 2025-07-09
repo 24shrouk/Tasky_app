@@ -3,23 +3,35 @@ import 'package:tasky_app/theming/my_colors.dart';
 import 'package:tasky_app/theming/my_fonts.dart';
 
 class CustomButton extends StatelessWidget {
-  const CustomButton({super.key, required this.onPressed, required this.text});
+  const CustomButton({
+    super.key,
+    required this.onPressed,
+    required this.text,
+    required this.outSidePadding,
+    required this.inSidePadding,
+    this.alignment = Alignment.center,
+    this.raduis = 10,
+  });
   final void Function() onPressed;
   final String text;
+  final EdgeInsetsGeometry outSidePadding;
+  final EdgeInsetsGeometry inSidePadding;
+  final AlignmentGeometry alignment;
+  final double raduis;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(right: 24.0),
+      padding: outSidePadding,
       child: Align(
-        alignment: Alignment.bottomRight,
+        alignment: alignment,
         child: ElevatedButton(
           onPressed: onPressed,
           style: ElevatedButton.styleFrom(
-            padding: EdgeInsets.symmetric(vertical: 12, horizontal: 24),
+            padding: inSidePadding,
             backgroundColor: MyColors.splachBackground,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(raduis),
             ),
           ),
           child: Text(

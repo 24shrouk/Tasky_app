@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tasky_app/widgets/indicator_widget.dart';
+import 'package:tasky_app/screens/onboard/widgets/indicator_widget.dart';
 
 class IndicatorsRowWidget extends StatelessWidget {
   const IndicatorsRowWidget({super.key, required this.index});

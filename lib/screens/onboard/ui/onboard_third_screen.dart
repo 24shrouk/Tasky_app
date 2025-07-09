@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tasky_app/widgets/onboard_screen_column_widget.dart';
+import 'package:tasky_app/screens/onboard/widgets/onboard_screen_column_widget.dart';
 
 class OnboardThirdScreen extends StatelessWidget {
   const OnboardThirdScreen({super.key});

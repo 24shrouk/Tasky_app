@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:tasky_app/screens/home/bottom_sheet_screen.dart';
+import 'package:tasky_app/screens/home/ui/bottom_sheet_screen.dart';
 import 'package:tasky_app/theming/my_colors.dart';
-import 'package:tasky_app/widgets/home_screen_body_frist_state.dart';
+import 'package:tasky_app/screens/home/widgets/home_screen_body_frist_state.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

@@ -8,5 +8,6 @@ class MyColors {
   static const Color graySmallTextColor = Color(0xff918D9B);
   static const Color floatActionButtonColor = Color(0xff24252C);
   static const Color indicatorColor = Color(0xffAFAFAF);
-  static const Color hintColor = Color(0xffCBCBCB); //Color(0xff6E6A7C);
+  static const Color hintColor = Color(0xffCBCBCB);
+  static const Color redColor = Color(0xffFF4949);
 }

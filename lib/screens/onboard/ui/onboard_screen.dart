@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:tasky_app/screens/home/home_screen.dart';
-import 'package:tasky_app/screens/onboard/onboard_frist_screen.dart';
-import 'package:tasky_app/screens/onboard/onboard_second_screen.dart';
-import 'package:tasky_app/screens/onboard/onboard_third_screen.dart';
+import 'package:tasky_app/screens/home/ui/home_screen.dart';
+import 'package:tasky_app/screens/onboard/ui/onboard_frist_screen.dart';
+import 'package:tasky_app/screens/onboard/ui/onboard_second_screen.dart';
+import 'package:tasky_app/screens/onboard/ui/onboard_third_screen.dart';
 import 'package:tasky_app/theming/my_colors.dart';
 import 'package:tasky_app/widgets/custom_button_widget.dart';
 
@@ -40,6 +40,9 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
             ),
             SizedBox(height: 80),
             CustomButton(
+              alignment: Alignment.bottomRight,
+              outSidePadding: const EdgeInsets.only(right: 24.0),
+              inSidePadding: EdgeInsets.symmetric(vertical: 12, horizontal: 24),
               onPressed: () {
                 if (index == 2) {
                   Navigator.of(
