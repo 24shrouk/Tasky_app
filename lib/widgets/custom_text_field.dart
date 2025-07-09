@@ -8,12 +8,14 @@ class CustomTextFormFeild extends StatelessWidget {
     this.maxLines = 1,
     this.onSaved,
     this.onChanged,
+    this.suffixIcon,
   });
 
   final String hint;
   final int maxLines;
   final void Function(String?)? onSaved;
   final void Function(String)? onChanged;
+  final Widget? suffixIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +37,7 @@ class CustomTextFormFeild extends StatelessWidget {
         border: buildBorder(),
         enabledBorder: buildBorder(MyColors.hintColor),
         focusedBorder: buildBorder(MyColors.hintColor),
+        suffixIcon: suffixIcon,
       ),
     );
   }

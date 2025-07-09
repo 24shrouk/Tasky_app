@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tasky_app/screens/auth/ui/login.dart';
+import 'package:tasky_app/screens/auth/ui/sign_up.dart';
 import 'package:tasky_app/screens/home/ui/home_screen.dart';
 import 'package:tasky_app/screens/onboard/ui/onboard_frist_screen.dart';
 import 'package:tasky_app/screens/onboard/ui/onboard_second_screen.dart';
@@ -45,9 +47,9 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
               inSidePadding: EdgeInsets.symmetric(vertical: 12, horizontal: 24),
               onPressed: () {
                 if (index == 2) {
-                  Navigator.of(
-                    context,
-                  ).push(MaterialPageRoute(builder: (context) => HomeScreen()));
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => LoginScreen()),
+                  );
                 } else {
                   _controller.animateToPage(
                     index + 1,

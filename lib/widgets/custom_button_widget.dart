@@ -7,8 +7,8 @@ class CustomButton extends StatelessWidget {
     super.key,
     required this.onPressed,
     required this.text,
-    required this.outSidePadding,
-    required this.inSidePadding,
+    this.outSidePadding = const EdgeInsets.all(0),
+    this.inSidePadding = const EdgeInsets.all(0),
     this.alignment = Alignment.center,
     this.raduis = 10,
   });
