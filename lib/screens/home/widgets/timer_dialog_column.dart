@@ -3,7 +3,7 @@ import 'package:table_calendar/table_calendar.dart';
 import 'package:tasky_app/theming/my_colors.dart';
 import 'package:intl/intl.dart';
 import 'package:tasky_app/theming/my_fonts.dart';
-import 'package:tasky_app/widgets/custom_button_widget.dart';
+import 'package:tasky_app/widgets/cancel_and_save_buttons_widget.dart';
 
 class TimerAlertDialogWidget extends StatefulWidget {
   const TimerAlertDialogWidget({super.key});
@@ -116,7 +116,7 @@ class _TimerAlertDialogWidgetState extends State<TimerAlertDialogWidget> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    _monthName(day.month),
+                    _monthName(day.month).toUpperCase(),
                     style: MyFontStyle.font14Regular.copyWith(
                       color: MyColors.floatActionButtonColor,
                     ),
@@ -135,31 +135,7 @@ class _TimerAlertDialogWidgetState extends State<TimerAlertDialogWidget> {
           ),
         ),
         SizedBox(height: 40),
-        Row(
-          children: [
-            Expanded(
-              child: TextButton(
-                child: Text(
-                  "Cancel",
-                  style: TextStyle(color: Colors.deepPurple),
-                ),
-                onPressed: () => Navigator.pop(context),
-              ),
-            ),
-            Expanded(
-              child: CustomButton(
-                onPressed: () {},
-                raduis: 4,
-                text: "Save",
-                outSidePadding: EdgeInsetsGeometry.only(right: 4),
-                inSidePadding: EdgeInsetsGeometry.symmetric(
-                  vertical: 8,
-                  horizontal: 40,
-                ),
-              ),
-            ),
-          ],
-        ),
+        CancelAndSaveButtonsWidget(),
       ],
     );
   }

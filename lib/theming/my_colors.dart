@@ -10,4 +10,5 @@ class MyColors {
   static const Color indicatorColor = Color(0xffAFAFAF);
   static const Color hintColor = Color(0xffCBCBCB);
   static const Color redColor = Color(0xffFF4949);
+  static const Color greyBorderColor = Color(0xff6E6A7C);
 }

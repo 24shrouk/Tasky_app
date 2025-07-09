@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:tasky_app/screens/home/widgets/flag_widget.dart';
 import 'package:tasky_app/screens/home/widgets/timer_dialog_column.dart';
 
 class RowOfBottomSheetIconsWidget extends StatelessWidget {
@@ -35,7 +36,14 @@ class RowOfBottomSheetIconsWidget extends StatelessWidget {
               padding: EdgeInsets.zero,
             ),
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return FlagWidget();
+                  },
+                );
+              },
               icon: SvgPicture.asset('assets/icons/flag.svg'),
               padding: EdgeInsets.zero,
             ),
