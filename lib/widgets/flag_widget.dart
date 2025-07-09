@@ -21,6 +21,11 @@ class _FlagWidgetState extends State<FlagWidget> {
               color: MyColors.grayBigTextColor,
             ),
           ),
+          Divider(color: MyColors.grayBigTextColor,),
+          Row(children: [],),
+          Row(children: [],),
+          Row(children: [],),
+
         ],
       ),
     );

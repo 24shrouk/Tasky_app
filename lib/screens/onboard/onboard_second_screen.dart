@@ -7,15 +7,12 @@ class OnBoardSecondScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: MyColors.whiteColor,
-      body: OnBoardScreenColumnWidget(
-        index: 1,
-        imagePath: 'assets/images/onboard_two.png',
-        header: 'Create daily routine',
-        title: """In Tasky  you can create your personalized 
+    return OnBoardScreenColumnWidget(
+      index: 1,
+      imagePath: 'assets/images/onboard_two.png',
+      header: 'Create daily routine',
+      title: """In Tasky  you can create your personalized 
   routine to stay productive""",
-      ),
     );
   }
 }
