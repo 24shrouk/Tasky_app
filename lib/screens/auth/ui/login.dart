@@ -4,6 +4,7 @@ import 'package:tasky_app/screens/auth/widgets/agreement_check_box.dart';
 import 'package:tasky_app/screens/auth/widgets/auth_header.dart';
 import 'package:tasky_app/screens/auth/widgets/auth_redirect_text.dart';
 import 'package:tasky_app/theming/my_colors.dart';
+import 'package:tasky_app/theming/my_fonts.dart';
 import 'package:tasky_app/widgets/custom_button_widget.dart';
 import 'package:tasky_app/widgets/custom_text_field.dart';
 
@@ -32,6 +33,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 header2: "sign in to access your account",
               ),
               const SizedBox(height: 80),
+              Text(
+                "Email",
+                style: MyFontStyle.font16Regular.copyWith(
+                  color: MyColors.greyBorderColor,
+                ),
+              ),
+              SizedBox(height: 5),
               const CustomTextFormFeild(
                 hint: "Enter your email",
                 suffixIcon: Icon(
@@ -40,6 +48,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               const SizedBox(height: 10),
+              Text(
+                "Password",
+                style: MyFontStyle.font16Regular.copyWith(
+                  color: MyColors.greyBorderColor,
+                ),
+              ),
+              SizedBox(height: 5),
               const CustomTextFormFeild(
                 hint: "Password",
                 suffixIcon: Icon(
@@ -47,9 +62,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   color: Color.fromARGB(255, 177, 176, 176),
                 ),
               ),
-              const AgreementCheckBox(),
-              const SizedBox(height: 150),
+
+              const SizedBox(height: 71),
               CustomButton(
+                width: double.infinity,
                 inSidePadding: EdgeInsetsGeometry.symmetric(
                   vertical: 10,
                   horizontal: 30,
@@ -64,7 +80,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   );
                 },
               ),
-              const SizedBox(height: 10),
+              SizedBox(height: 120),
               Center(
                 child: AuthRedirectText(
                   text1: "New member ?",

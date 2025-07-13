@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:tasky_app/screens/auth/ui/login.dart';
-import 'package:tasky_app/screens/auth/ui/sign_up.dart';
-import 'package:tasky_app/screens/home/ui/home_screen.dart';
 import 'package:tasky_app/screens/onboard/ui/onboard_frist_screen.dart';
 import 'package:tasky_app/screens/onboard/ui/onboard_second_screen.dart';
 import 'package:tasky_app/screens/onboard/ui/onboard_third_screen.dart';

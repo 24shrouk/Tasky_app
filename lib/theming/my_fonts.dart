@@ -21,6 +21,11 @@ class MyFontStyle {
     fontWeight: FontWeight.w400,
     fontFamily: 'Lato',
   );
+  static TextStyle font12Regular = const TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Lato',
+  );
   static TextStyle font10Regular = const TextStyle(
     fontSize: 10,
     fontWeight: FontWeight.w400,

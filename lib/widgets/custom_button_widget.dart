@@ -11,6 +11,7 @@ class CustomButton extends StatelessWidget {
     this.inSidePadding = const EdgeInsets.all(0),
     this.alignment = Alignment.center,
     this.raduis = 10,
+    this.width,
   });
   final void Function() onPressed;
   final String text;
@@ -18,6 +19,7 @@ class CustomButton extends StatelessWidget {
   final EdgeInsetsGeometry inSidePadding;
   final AlignmentGeometry alignment;
   final double raduis;
+  final double? width;
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +30,7 @@ class CustomButton extends StatelessWidget {
         child: ElevatedButton(
           onPressed: onPressed,
           style: ElevatedButton.styleFrom(
+            minimumSize: width != null ? Size(width!, 48) : null,
             padding: inSidePadding,
             backgroundColor: MyColors.splachBackground,
             shape: RoundedRectangleBorder(

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:tasky_app/screens/home/ui/bottom_sheet_screen.dart';
+import 'package:tasky_app/screens/home/ui/home_screen_second_state.dart';
 import 'package:tasky_app/theming/my_colors.dart';
-import 'package:tasky_app/screens/home/widgets/home_screen_body_frist_state.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -23,7 +23,10 @@ class _HomeScreenState extends State<HomeScreen> {
           child: SvgPicture.asset('assets/icons/appbar_logo.svg'),
         ),
       ),
-      body: HomeScreenBodyFristState(),
+      body: Padding(
+        padding: const EdgeInsets.all(24.0),
+        child: HomeScreenBodySecondState(),
+      ), //HomeScreenBodyFristState(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showModalBottomSheet(

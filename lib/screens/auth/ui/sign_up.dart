@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:tasky_app/screens/auth/widgets/auth_redirect_text.dart';
 import 'package:tasky_app/screens/home/ui/home_screen.dart';
 import 'package:tasky_app/theming/my_colors.dart';
-import 'package:tasky_app/theming/my_fonts.dart';
-import 'package:tasky_app/screens/auth/widgets/agreement_check_box.dart';
 import 'package:tasky_app/screens/auth/widgets/auth_header.dart';
-import 'package:tasky_app/screens/auth/widgets/auth_redirect_text.dart';
+import 'package:tasky_app/theming/my_fonts.dart';
 import 'package:tasky_app/widgets/custom_button_widget.dart';
 import 'package:tasky_app/widgets/custom_text_field.dart';
 
@@ -33,67 +33,65 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 header2: "by creating a free account.",
               ),
               const SizedBox(height: 50),
-              const CustomTextFormFeild(
-                hint: "Full name",
-                suffixIcon: Icon(
-                  Icons.person_outlined,
-                  color: Color.fromARGB(255, 177, 176, 176),
+              Text(
+                "Email",
+                style: MyFontStyle.font16Regular.copyWith(
+                  color: MyColors.greyBorderColor,
                 ),
               ),
-              const SizedBox(height: 10),
+              SizedBox(height: 5),
               const CustomTextFormFeild(
-                hint: "Valid email",
+                hint: "Enter your Email",
                 suffixIcon: Icon(
                   Icons.email_outlined,
                   color: Color.fromARGB(255, 177, 176, 176),
                 ),
               ),
               const SizedBox(height: 10),
-              const CustomTextFormFeild(
-                hint: "Phone number",
-                suffixIcon: Icon(
-                  Icons.phone_android_outlined,
-                  color: Color.fromARGB(255, 177, 176, 176),
+              Text(
+                "Password",
+                style: MyFontStyle.font16Regular.copyWith(
+                  color: MyColors.greyBorderColor,
                 ),
+              ),
+              SizedBox(height: 5),
+              CustomTextFormFeild(
+                hint: "Password",
+                suffixIcon: IconButton(
+                  onPressed: () {},
+                  icon: Icon(
+                    Icons.visibility_outlined,
+                    color: Color(0xffBABABA),
+                  ),
+                ),
+                // suffixIcon: SvgPicture.asset(
+                //   width: 2,
+                //   height: 2,
+                //   'assets/icons/visibility_icon.svg',
+                //   fit: BoxFit.contain,
+                // ),
               ),
               const SizedBox(height: 10),
-              const CustomTextFormFeild(
-                hint: "Strong password",
-                suffixIcon: Icon(
-                  Icons.visibility_off_outlined,
-                  color: Color.fromARGB(255, 177, 176, 176),
+              Text(
+                "Confirm Password",
+                style: MyFontStyle.font16Regular.copyWith(
+                  color: MyColors.greyBorderColor,
                 ),
               ),
-              AgreementCheckBox(
-                text1: TextSpan(
-                  text: "By checking the box you agree to our",
-                  style: MyFontStyle.font10Regular.copyWith(
-                    color: MyColors.blackTextColor,
+              SizedBox(height: 5),
+              CustomTextFormFeild(
+                hint: "Confirm Password",
+                suffixIcon: IconButton(
+                  onPressed: () {},
+                  icon: Icon(
+                    Icons.visibility_outlined,
+                    color: Color(0xffBABABA),
                   ),
-                  children: [
-                    TextSpan(
-                      text: " Terms",
-                      style: MyFontStyle.font10Regular.copyWith(
-                        color: MyColors.splachBackground,
-                      ),
-                    ),
-                    TextSpan(
-                      text: " and",
-                      style: MyFontStyle.font10Regular.copyWith(
-                        color: MyColors.blackTextColor,
-                      ),
-                    ),
-                    TextSpan(
-                      text: " Conditions",
-                      style: MyFontStyle.font10Regular.copyWith(
-                        color: MyColors.splachBackground,
-                      ),
-                    ),
-                  ],
                 ),
               ),
-              const SizedBox(height: 100),
+              SizedBox(height: 41),
               CustomButton(
+                width: double.infinity,
                 inSidePadding: EdgeInsetsGeometry.symmetric(
                   vertical: 10,
                   horizontal: 30,
@@ -107,7 +105,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   );
                 },
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 90),
               Center(
                 child: AuthRedirectText(
                   text1: "Already a member? ",

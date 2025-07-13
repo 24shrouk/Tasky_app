@@ -9,6 +9,7 @@ class CustomTextFormFeild extends StatelessWidget {
     this.onSaved,
     this.onChanged,
     this.suffixIcon,
+    this.prefixIcon,
   });
 
   final String hint;
@@ -16,6 +17,7 @@ class CustomTextFormFeild extends StatelessWidget {
   final void Function(String?)? onSaved;
   final void Function(String)? onChanged;
   final Widget? suffixIcon;
+  final Widget? prefixIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -30,21 +32,24 @@ class CustomTextFormFeild extends StatelessWidget {
         }
       },
       maxLines: maxLines,
+
       cursorColor: MyColors.graySmallTextColor,
       decoration: InputDecoration(
+        // contentPadding: EdgeInsetsGeometry.all(12),
         hintText: hint,
         hintStyle: const TextStyle(color: MyColors.hintColor),
         border: buildBorder(),
         enabledBorder: buildBorder(MyColors.hintColor),
         focusedBorder: buildBorder(MyColors.hintColor),
         suffixIcon: suffixIcon,
+        prefixIcon: prefixIcon,
       ),
     );
   }
 
   OutlineInputBorder buildBorder([color]) {
     return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8),
+      borderRadius: BorderRadius.circular(10),
       borderSide: BorderSide(color: color ?? Colors.white),
     );
   }
