@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:tasky_app/screens/onboard/ui/onboard_screen.dart';
-import 'package:tasky_app/theming/my_colors.dart';
+import 'package:tasky_app/core/utils/my_colors.dart';
 
 class SplachScreen extends StatefulWidget {
   const SplachScreen({super.key});

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tasky_app/screens/home/widgets/flag_container_widget.dart';
-import 'package:tasky_app/theming/my_colors.dart';
-import 'package:tasky_app/theming/my_fonts.dart';
+import 'package:tasky_app/core/utils/my_colors.dart';
+import 'package:tasky_app/core/utils/my_fonts.dart';
 import 'package:tasky_app/widgets/cancel_and_save_buttons_widget.dart';
 
 class FlagWidget extends StatefulWidget {

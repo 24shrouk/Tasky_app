@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:tasky_app/theming/my_colors.dart';
-import 'package:tasky_app/theming/my_fonts.dart';
+import 'package:tasky_app/core/utils/my_colors.dart';
+import 'package:tasky_app/core/utils/my_fonts.dart';
 
 class AuthRedirectText extends StatelessWidget {
   const AuthRedirectText({
@@ -16,24 +16,27 @@ class AuthRedirectText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RichText(
-      text: TextSpan(
-        text: text1,
-        style: MyFontStyle.font14Regular.copyWith(
-          color: MyColors.blackTextColor,
-        ),
-        children: [
-          TextSpan(
-            text: text2,
-            style: MyFontStyle.font14Regular.copyWith(
-              color: MyColors.splachBackground,
-            ),
-            recognizer: TapGestureRecognizer()
-              ..onTap =
-                  onTap, //هنا .. => اسمه  Cascade Operator وده معنه ان بعد ما ينشى
-            //object من TapGestureRecognizer هينفذ الحاجة اللي في on tap
+    return Align(
+      alignment: Alignment.bottomCenter,
+      child: RichText(
+        text: TextSpan(
+          text: text1,
+          style: MyFontStyle.font14Regular.copyWith(
+            color: MyColors.blackTextColor,
           ),
-        ],
+          children: [
+            TextSpan(
+              text: text2,
+              style: MyFontStyle.font14Regular.copyWith(
+                color: MyColors.splachBackground,
+              ),
+              recognizer: TapGestureRecognizer()
+                ..onTap =
+                    onTap, //هنا .. => اسمه  Cascade Operator وده معنه ان بعد ما ينشى
+              //object من TapGestureRecognizer هينفذ الحاجة اللي في on tap
+            ),
+          ],
+        ),
       ),
     );
   }

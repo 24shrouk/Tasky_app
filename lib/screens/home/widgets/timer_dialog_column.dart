@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
-import 'package:tasky_app/theming/my_colors.dart';
+import 'package:tasky_app/core/utils/my_colors.dart';
 import 'package:intl/intl.dart';
-import 'package:tasky_app/theming/my_fonts.dart';
+import 'package:tasky_app/core/utils/my_fonts.dart';
 import 'package:tasky_app/widgets/cancel_and_save_buttons_widget.dart';
 
 class TimerAlertDialogWidget extends StatefulWidget {

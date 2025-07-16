@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:tasky_app/theming/my_colors.dart';
+import 'package:tasky_app/core/utils/my_colors.dart';
 
 class CustomTextFormFeild extends StatelessWidget {
-  const CustomTextFormFeild({
+  CustomTextFormFeild({
     super.key,
     required this.hint,
     this.maxLines = 1,
@@ -10,6 +10,11 @@ class CustomTextFormFeild extends StatelessWidget {
     this.onChanged,
     this.suffixIcon,
     this.prefixIcon,
+    this.enabledBorderColor,
+    this.focusedBorderColor,
+    this.obscurText = false,
+    this.controller,
+    this.validator,
   });
 
   final String hint;
@@ -18,29 +23,31 @@ class CustomTextFormFeild extends StatelessWidget {
   final void Function(String)? onChanged;
   final Widget? suffixIcon;
   final Widget? prefixIcon;
+  final Color? enabledBorderColor;
+  final Color? focusedBorderColor;
+  bool obscurText;
+  TextEditingController? controller;
+  String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      obscureText: obscurText,
+      validator: validator,
+      controller: controller,
       onChanged: onChanged,
       onSaved: onSaved,
-      validator: (value) {
-        if (value?.isEmpty ?? true) {
-          return 'Feild is required';
-        } else {
-          return null;
-        }
-      },
       maxLines: maxLines,
 
       cursorColor: MyColors.graySmallTextColor,
       decoration: InputDecoration(
-        // contentPadding: EdgeInsetsGeometry.all(12),
         hintText: hint,
         hintStyle: const TextStyle(color: MyColors.hintColor),
         border: buildBorder(),
-        enabledBorder: buildBorder(MyColors.hintColor),
-        focusedBorder: buildBorder(MyColors.hintColor),
+        enabledBorder: buildBorder(enabledBorderColor),
+        focusedBorder: buildBorder(focusedBorderColor),
+        errorBorder: buildBorder(MyColors.redColor),
+        focusedErrorBorder: buildBorder(MyColors.redColor),
         suffixIcon: suffixIcon,
         prefixIcon: prefixIcon,
       ),

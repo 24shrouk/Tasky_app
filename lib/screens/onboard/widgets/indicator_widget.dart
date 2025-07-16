@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tasky_app/theming/my_colors.dart';
+import 'package:tasky_app/core/utils/my_colors.dart';
 
 class IndicatorWidget extends StatelessWidget {
   const IndicatorWidget({super.key, required this.isActive});

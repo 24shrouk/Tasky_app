@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:tasky_app/theming/my_colors.dart';
-import 'package:tasky_app/theming/my_fonts.dart';
+import 'package:tasky_app/core/utils/my_colors.dart';
+import 'package:tasky_app/core/utils/my_fonts.dart';
 
 class FlagContainer extends StatelessWidget {
   const FlagContainer({
