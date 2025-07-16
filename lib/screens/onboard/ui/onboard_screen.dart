@@ -3,7 +3,7 @@ import 'package:tasky_app/screens/auth/ui/login.dart';
 import 'package:tasky_app/screens/onboard/ui/onboard_frist_screen.dart';
 import 'package:tasky_app/screens/onboard/ui/onboard_second_screen.dart';
 import 'package:tasky_app/screens/onboard/ui/onboard_third_screen.dart';
-import 'package:tasky_app/theming/my_colors.dart';
+import 'package:tasky_app/core/utils/my_colors.dart';
 import 'package:tasky_app/widgets/custom_button_widget.dart';
 
 class OnBoardScreen extends StatefulWidget {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tasky_app/theming/my_colors.dart';
-import 'package:tasky_app/theming/my_fonts.dart';
+import 'package:tasky_app/core/utils/my_colors.dart';
+import 'package:tasky_app/core/utils/my_fonts.dart';
 
 class AgreementCheckBox extends StatefulWidget {
   const AgreementCheckBox({super.key, this.text1});
