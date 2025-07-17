@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tasky_app/core/utils/app_dialog.dart';
 import 'package:tasky_app/core/validator_function.dart';
-import 'package:tasky_app/firebase/login_and_register.dart';
+import 'package:tasky_app/firebase/firebase_auth.dart';
+import 'package:tasky_app/screens/auth/ui/login.dart';
 import 'package:tasky_app/screens/auth/widgets/auth_redirect_text.dart';
 import 'package:tasky_app/core/utils/my_colors.dart';
 import 'package:tasky_app/screens/auth/widgets/auth_header.dart';
@@ -105,7 +106,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   validator: (text) {
                     return Validator.validateConfirmPassword(
                       text,
-                      confirmPasswordControler.text,
+                      passwordControler.text,
                     );
                   },
                   hint: "Confirm Password",
@@ -146,7 +147,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             confirmPasswordControler.clear();
                             Navigator.of(context).pushReplacement(
                               MaterialPageRoute(
-                                builder: (context) => const SignUpScreen(),
+                                builder: (context) => const LoginScreen(),
                               ),
                             );
                           })

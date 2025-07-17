@@ -15,7 +15,7 @@ abstract class Validator {
   static String? validatePassword(String? val) {
     final RegExp passwordRegex = RegExp(Constant.passwordRegex);
     if (val == null || val.isEmpty) {
-      return 'Password cannot be enpty';
+      return 'Password cannot be empty';
     } else if (!passwordRegex.hasMatch(val)) {
       return 'Enter a valid password';
     } else {
@@ -25,7 +25,7 @@ abstract class Validator {
 
   static String? validateConfirmPassword(String? val, String? password) {
     if (val == null || val.isEmpty) {
-      return 'Password cannot be enpty';
+      return 'Password cannot be empty';
     } else if (val != password) {
       return 'Confirm password must match the password';
     } else {

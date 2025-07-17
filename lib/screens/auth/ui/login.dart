@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tasky_app/core/utils/app_dialog.dart';
 import 'package:tasky_app/core/validator_function.dart';
-import 'package:tasky_app/firebase/login_and_register.dart';
+import 'package:tasky_app/firebase/firebase_auth.dart';
 import 'package:tasky_app/screens/auth/ui/sign_up.dart';
 import 'package:tasky_app/screens/auth/widgets/auth_header.dart';
 import 'package:tasky_app/screens/auth/widgets/auth_redirect_text.dart';
