@@ -2,23 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:tasky_app/screens/home/widgets/flag_container_widget.dart';
 import 'package:tasky_app/core/utils/my_colors.dart';
 import 'package:tasky_app/core/utils/my_fonts.dart';
-import 'package:tasky_app/widgets/cancel_and_save_buttons_widget.dart';
+
+import 'package:tasky_app/widgets/custom_button_widget.dart';
 
 class FlagWidget extends StatefulWidget {
-  const FlagWidget({super.key});
-
+  const FlagWidget({super.key, required this.onPressed});
+  final void Function(int) onPressed;
   @override
   State<FlagWidget> createState() => _FlagWidgetState();
 }
 
 class _FlagWidgetState extends State<FlagWidget> {
+  List<int> index = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  int selectedIndex = 1;
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
       backgroundColor: MyColors.whiteColor,
       content: Column(
         mainAxisSize: MainAxisSize.min,
-
         children: [
           Text(
             "Task Priority",
@@ -28,41 +30,53 @@ class _FlagWidgetState extends State<FlagWidget> {
           ),
           Divider(color: MyColors.grayBigTextColor),
           SizedBox(height: 22),
-          Row(
-            spacing: 25,
-            children: [
-              FlagContainer(isSelected: true, number: 1),
-              FlagContainer(isSelected: false, number: 2),
-              FlagContainer(isSelected: false, number: 3),
-            ],
+          Wrap(
+            spacing: 16,
+            runSpacing: 16,
+            children: index
+                .map(
+                  (index) => FlagContainer(
+                    onTap: () {
+                      selectedIndex = index;
+                      setState(() {});
+                    },
+                    isSelected: selectedIndex == index,
+                    number: index,
+                  ),
+                )
+                .toList(),
           ),
-          SizedBox(height: 12),
-          Row(
-            spacing: 25,
-            children: [
-              FlagContainer(isSelected: false, number: 4),
-              FlagContainer(isSelected: false, number: 5),
-              FlagContainer(isSelected: false, number: 6),
-            ],
-          ),
-          SizedBox(height: 12),
-          Row(
-            spacing: 25,
-            children: [
-              FlagContainer(isSelected: false, number: 7),
-              FlagContainer(isSelected: false, number: 8),
-              FlagContainer(isSelected: false, number: 9),
-            ],
-          ),
-          SizedBox(height: 12),
-          Row(
-            spacing: 25,
-            children: [FlagContainer(isSelected: false, number: 10)],
-          ),
-          SizedBox(height: 28),
-          CancelAndSaveButtonsWidget(),
         ],
       ),
+      actions: [
+        Row(
+          children: [
+            Expanded(
+              child: TextButton(
+                child: Text(
+                  "Cancel",
+                  style: TextStyle(color: Colors.deepPurple),
+                ),
+                onPressed: () => Navigator.pop(context),
+              ),
+            ),
+            Expanded(
+              child: CustomButton(
+                onPressed: () {
+                  widget.onPressed(selectedIndex);
+                },
+                raduis: 4,
+                text: "Save",
+                outSidePadding: EdgeInsetsGeometry.only(right: 4),
+                inSidePadding: EdgeInsetsGeometry.symmetric(
+                  vertical: 8,
+                  horizontal: 40,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ],
     );
   }
 }

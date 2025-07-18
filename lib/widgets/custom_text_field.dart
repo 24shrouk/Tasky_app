@@ -4,7 +4,7 @@ import 'package:tasky_app/core/utils/my_colors.dart';
 class CustomTextFormFeild extends StatelessWidget {
   CustomTextFormFeild({
     super.key,
-    required this.hint,
+    this.hint,
     this.maxLines = 1,
     this.onSaved,
     this.onChanged,
@@ -15,9 +15,10 @@ class CustomTextFormFeild extends StatelessWidget {
     this.obscurText = false,
     this.controller,
     this.validator,
+    this.hintStyle,
   });
 
-  final String hint;
+  final String? hint;
   final int maxLines;
   final void Function(String?)? onSaved;
   final void Function(String)? onChanged;
@@ -28,21 +29,24 @@ class CustomTextFormFeild extends StatelessWidget {
   bool obscurText;
   TextEditingController? controller;
   String? Function(String?)? validator;
+  TextStyle? hintStyle;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      keyboardType: TextInputType.multiline,
+      maxLines: null,
+      minLines: 1,
       obscureText: obscurText,
       validator: validator,
       controller: controller,
       onChanged: onChanged,
       onSaved: onSaved,
-      maxLines: maxLines,
 
       cursorColor: MyColors.graySmallTextColor,
       decoration: InputDecoration(
         hintText: hint,
-        hintStyle: const TextStyle(color: MyColors.hintColor),
+        hintStyle: hintStyle ?? const TextStyle(color: MyColors.hintColor),
         border: buildBorder(),
         enabledBorder: buildBorder(enabledBorderColor),
         focusedBorder: buildBorder(focusedBorderColor),

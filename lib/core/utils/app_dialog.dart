@@ -3,15 +3,20 @@ import 'package:tasky_app/core/utils/my_colors.dart';
 import 'package:tasky_app/core/utils/my_fonts.dart';
 
 abstract class AppDialog {
-  static void showLoading() {
-    Stack(
-      children: [
-        ModalBarrier(dismissible: false, color: MyColors.hintColor),
-        CircularProgressIndicator(
-          color: MyColors.splachBackground,
-          strokeWidth: 4,
-        ),
-      ],
+  static void showLoading(BuildContext context) {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => Stack(
+        alignment: Alignment.center,
+        children: [
+          const ModalBarrier(
+            dismissible: false,
+            color: Color.fromARGB(134, 249, 248, 248),
+          ),
+          const CircularProgressIndicator(),
+        ],
+      ),
     );
   }
 

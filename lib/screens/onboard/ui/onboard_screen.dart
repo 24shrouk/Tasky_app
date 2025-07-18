@@ -8,6 +8,7 @@ import 'package:tasky_app/widgets/custom_button_widget.dart';
 
 class OnBoardScreen extends StatefulWidget {
   const OnBoardScreen({super.key});
+  static const String routeName = "OnBoardScreen";
 
   @override
   State<OnBoardScreen> createState() => _OnBoardScreenState();

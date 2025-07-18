@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tasky_app/constants/asset_constant.dart';
 import 'package:tasky_app/core/utils/my_colors.dart';
 import 'package:tasky_app/core/utils/my_fonts.dart';
 
@@ -14,7 +15,7 @@ class HomeScreenBodyFristState extends StatelessWidget {
 
         children: [
           SizedBox(height: 40),
-          Image.asset('assets/images/home_image.png'),
+          Image.asset(AssetConstant.homeEmptyImage),
           SizedBox(height: 15),
           Text(
             'What do you want to do today?',

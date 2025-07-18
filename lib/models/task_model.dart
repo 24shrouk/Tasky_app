@@ -3,29 +3,33 @@ class TaskModel {
   final String description;
   final int periority;
   final DateTime dateTime;
+  final String? id;
 
   TaskModel({
+    this.id,
     required this.title,
     required this.description,
     required this.periority,
     required this.dateTime,
   });
 
-  static TaskModel fromJson(Map<String, dynamic> json) {
+  factory TaskModel.fromJson(Map<String, dynamic> json) {
     return TaskModel(
-      title: json['title'] as String,
-      description: json['description'] as String,
-      periority: json['periority'] as int,
-      dateTime: json['dateTime'] as DateTime,
+      id: json['id'],
+      title: json['title'],
+      description: json['description'],
+      periority: json['periority'],
+      dateTime: DateTime.fromMillisecondsSinceEpoch(json['dateTime']),
     );
   }
 
-  static Map<String, dynamic> toJson(TaskModel task) {
+  Map<String, dynamic> toJson() {
     return {
-      'title': task.title,
-      'description':task.description,
-      'periority':task.periority,
-      'dateTime':task.dateTime,
+      'id': id,
+      'title': title,
+      'description': description,
+      'periority': periority,
+      'dateTime': dateTime.millisecondsSinceEpoch,
     };
   }
 }

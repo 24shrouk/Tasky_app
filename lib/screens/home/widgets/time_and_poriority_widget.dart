@@ -4,8 +4,8 @@ import 'package:tasky_app/core/utils/my_colors.dart';
 import 'package:tasky_app/core/utils/my_fonts.dart';
 
 class RowOfTimeAndPoriorityWidget extends StatefulWidget {
-  const RowOfTimeAndPoriorityWidget({super.key});
-
+  const RowOfTimeAndPoriorityWidget({super.key, required this.priority});
+  final int priority;
   @override
   State<RowOfTimeAndPoriorityWidget> createState() =>
       _RowOfTimeAndPoriorityWidgetState();
@@ -31,16 +31,8 @@ class _RowOfTimeAndPoriorityWidgetState
             ),
           ),
         ),
-        // Container(
-        //   padding: EdgeInsets.all(5),
-        //   decoration: BoxDecoration(
-        //     border: Border.all(color: MyColors.splachBackground),
-        //     borderRadius: BorderRadius.circular(4),
-        //     color: MyColors.whiteColor,
-        //   ),
-        //   child: ,
-        // ),
-        FlagSmallContainerWidget(),
+
+        FlagSmallContainerWidget(priority: widget.priority),
       ],
     );
   }

@@ -24,6 +24,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController emailControler = TextEditingController();
   TextEditingController passwordControler = TextEditingController();
   TextEditingController confirmPasswordControler = TextEditingController();
+  TextEditingController userNameControler = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +45,25 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   header2: "by creating a free account.",
                 ),
                 const SizedBox(height: 50),
+                Text(
+                  "User Name",
+                  style: MyFontStyle.font16Regular.copyWith(
+                    color: MyColors.greyBorderColor,
+                  ),
+                ),
+                SizedBox(height: 5),
+                CustomTextFormFeild(
+                  controller: userNameControler,
+                  validator: Validator.validateName,
+                  enabledBorderColor: MyColors.hintColor,
+                  focusedBorderColor: MyColors.hintColor,
+                  hint: "Enter User Name",
+                  suffixIcon: Icon(
+                    Icons.email_outlined,
+                    color: Color.fromARGB(255, 177, 176, 176),
+                  ),
+                ),
+                const SizedBox(height: 10),
                 Text(
                   "Email",
                   style: MyFontStyle.font16Regular.copyWith(
@@ -134,11 +154,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                   text: 'Sign Up',
                   onPressed: () async {
-                    AppDialog.showLoading();
+                    AppDialog.showLoading(context);
                     if (formKey.currentState!.validate()) {
                       FireBaseUser.registerFireBase(
                             emailControler.text,
                             passwordControler.text,
+                            userNameControler.text,
                           )
                           .then((_) {
                             Navigator.of(context).pop();

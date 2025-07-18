@@ -6,7 +6,22 @@ import 'package:tasky_app/widgets/custom_text_field.dart';
 import 'package:tasky_app/screens/home/widgets/row_of_bottom_sheet_icons_widget.dart';
 
 class BottomSheetScreen extends StatefulWidget {
-  const BottomSheetScreen({super.key});
+  const BottomSheetScreen({
+    super.key,
+    required this.taskController,
+    required this.descriptionController,
+    this.onTapFlag,
+    this.onTapTimer,
+    this.onTapSend,
+    required this.priority,
+  });
+
+  final TextEditingController taskController;
+  final TextEditingController descriptionController;
+  final void Function()? onTapFlag;
+  final void Function()? onTapTimer;
+  final void Function()? onTapSend;
+  final int priority;
 
   @override
   State<BottomSheetScreen> createState() => _BottomSheetScreenState();
@@ -15,6 +30,7 @@ class BottomSheetScreen extends StatefulWidget {
 class _BottomSheetScreenState extends State<BottomSheetScreen> {
   final GlobalKey<FormState> formKey = GlobalKey();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -38,6 +54,7 @@ class _BottomSheetScreenState extends State<BottomSheetScreen> {
                 hint: "Do math homework",
                 enabledBorderColor: MyColors.hintColor,
                 focusedBorderColor: MyColors.hintColor,
+                controller: widget.taskController,
               ),
               SizedBox(height: 12),
               Row(
@@ -47,13 +64,18 @@ class _BottomSheetScreenState extends State<BottomSheetScreen> {
                     child: CustomTextFormFeild(
                       hint: "Description",
                       focusedBorderColor: MyColors.hintColor,
+                      controller: widget.descriptionController,
                     ),
                   ),
-                  RowOfTimeAndPoriorityWidget(),
+                  RowOfTimeAndPoriorityWidget(priority: widget.priority),
                 ],
               ),
 
-              RowOfBottomSheetIconsWidget(),
+              RowOfBottomSheetIconsWidget(
+                onTapFlag: widget.onTapFlag,
+                onTapTimer: widget.onTapTimer,
+                onTapSend: widget.onTapSend,
+              ),
             ],
           ),
         ),
