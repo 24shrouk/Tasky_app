@@ -1,10 +1,11 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:tasky_app/core/utils/app_shared_pref.dart';
 import 'package:tasky_app/screens/auth/ui/login.dart';
 import 'package:tasky_app/screens/home/ui/home_screen.dart';
 import 'package:tasky_app/screens/onboard/ui/onboard_screen.dart';
+import 'package:tasky_app/screens/user_profile/views/user_profile.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,6 +34,7 @@ class Tasky extends StatelessWidget {
         LoginScreen.routeName: (context) => const LoginScreen(),
         HomeScreen.routeName: (context) => const HomeScreen(),
         OnBoardScreen.routeName: (context) => const OnBoardScreen(),
+        UserProfile.profileRouteName: (context) => UserProfile(),
       },
       theme: ThemeData(
         primarySwatch: Colors.blue,

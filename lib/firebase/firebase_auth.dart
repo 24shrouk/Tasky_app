@@ -40,6 +40,7 @@ abstract class FireBaseUser {
           password: password,
         ),
       );
+      log(credential.user?.uid.toString() ?? 'Cred: null');
       return credential;
     } on FirebaseAuthException catch (e) {
       if (e.code == Constant.weakPassword) {

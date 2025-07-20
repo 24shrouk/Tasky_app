@@ -4,8 +4,13 @@ import 'package:tasky_app/core/utils/my_colors.dart';
 import 'package:tasky_app/core/utils/my_fonts.dart';
 
 class RowOfTimeAndPoriorityWidget extends StatefulWidget {
-  const RowOfTimeAndPoriorityWidget({super.key, required this.priority});
+  const RowOfTimeAndPoriorityWidget({
+    super.key,
+    required this.priority,
+    required this.time,
+  });
   final int priority;
+  final String time;
   @override
   State<RowOfTimeAndPoriorityWidget> createState() =>
       _RowOfTimeAndPoriorityWidgetState();
@@ -25,7 +30,7 @@ class _RowOfTimeAndPoriorityWidgetState
             color: MyColors.dayContainerColor,
           ),
           child: Text(
-            "Today",
+            widget.time,
             style: MyFontStyle.font14Regular.copyWith(
               color: MyColors.greyTextColor,
             ),

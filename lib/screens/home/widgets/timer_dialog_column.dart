@@ -5,7 +5,8 @@ import 'package:intl/intl.dart';
 import 'package:tasky_app/core/utils/my_fonts.dart';
 
 class TimerAlertDialogWidget extends StatefulWidget {
-  const TimerAlertDialogWidget({super.key});
+  const TimerAlertDialogWidget({super.key, required this.onSave});
+  final Function(DateTime selectedDay) onSave;
 
   @override
   State<TimerAlertDialogWidget> createState() => _TimerAlertDialogWidgetState();
@@ -60,6 +61,7 @@ class _TimerAlertDialogWidgetState extends State<TimerAlertDialogWidget> {
             setState(() {
               _selectedDay = selectedDay;
               _focusedDay = focusedDay;
+              widget.onSave(_selectedDay!);
             });
           },
 

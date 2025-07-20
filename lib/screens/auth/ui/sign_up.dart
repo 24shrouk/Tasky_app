@@ -29,6 +29,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: MyColors.whiteColor,
       body: SingleChildScrollView(
         child: Padding(
@@ -182,7 +183,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     }
                   },
                 ),
-                const SizedBox(height: 90),
+                const SizedBox(height: 40),
                 Center(
                   child: AuthRedirectText(
                     text1: "Already a member? ",

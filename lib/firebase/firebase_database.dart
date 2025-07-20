@@ -39,6 +39,7 @@ abstract class FireBaseDatabase {
     required String description,
     required int periority,
     required DateTime dateTime,
+    required bool isCompeleted,
   }) async {
     var docref = collectionTasks().doc();
     var taskId = docref.id;
@@ -63,5 +64,10 @@ abstract class FireBaseDatabase {
 
   static Future<void> deleteTask(TaskModel task) {
     return collectionTasks().doc(task.id).delete();
+  }
+
+  static Future<TaskModel> getTask(TaskModel task) async {
+    var taskModel = await collectionTasks().doc(task.id).get();
+    return taskModel.data()!;
   }
 }

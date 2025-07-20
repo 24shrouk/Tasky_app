@@ -19,7 +19,7 @@ class CustomTextFormFeild extends StatelessWidget {
   });
 
   final String? hint;
-  final int maxLines;
+  final int? maxLines;
   final void Function(String?)? onSaved;
   final void Function(String)? onChanged;
   final Widget? suffixIcon;
@@ -35,7 +35,7 @@ class CustomTextFormFeild extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       keyboardType: TextInputType.multiline,
-      maxLines: null,
+      maxLines: maxLines,
       minLines: 1,
       obscureText: obscurText,
       validator: validator,

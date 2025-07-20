@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:intl/intl.dart';
 import 'package:tasky_app/constants/asset_constant.dart';
+import 'package:tasky_app/core/app_ontap_functions.dart';
 import 'package:tasky_app/core/utils/app_dialog.dart';
 import 'package:tasky_app/firebase/firebase_database.dart';
 import 'package:tasky_app/models/task_model.dart';
@@ -10,28 +12,44 @@ import 'package:tasky_app/core/utils/my_colors.dart';
 import 'package:tasky_app/core/utils/my_fonts.dart';
 import 'package:tasky_app/widgets/custom_text_field.dart';
 
-class DetailsScreen extends StatefulWidget {
-  const DetailsScreen({super.key, required this.taskModel});
-  final TaskModel taskModel;
+class DetailsTaskScreen extends StatefulWidget {
+  DetailsTaskScreen({super.key, required this.taskModel});
+  TaskModel taskModel;
 
   @override
-  State<DetailsScreen> createState() => _DetailsScreenState();
+  State<DetailsTaskScreen> createState() => _DetailsTaskScreenState();
 }
 
-class _DetailsScreenState extends State<DetailsScreen> {
+class _DetailsTaskScreenState extends State<DetailsTaskScreen> {
   TextEditingController taskTitle = TextEditingController();
   TextEditingController taskDescription = TextEditingController();
-  bool isSelected = false;
+  late bool isSelected;
+  DateTime selectedDate = DateTime.now();
+  TaskModel? task;
 
   @override
   void initState() {
     super.initState();
     taskTitle.text = widget.taskModel.title;
     taskDescription.text = widget.taskModel.description;
+
+    fetchTaskData();
+    isSelected = widget.taskModel.isCompeleted;
+  }
+
+  Future<void> fetchTaskData() async {
+    task = await FireBaseDatabase.getTask(widget.taskModel);
+    setState(() {
+      widget.taskModel = task!;
+      isSelected = task!.isCompeleted;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
+    String formattedDate = DateFormat(
+      'EEE dd-MM-yyyy',
+    ).format(widget.taskModel.dateTime);
     return Scaffold(
       backgroundColor: MyColors.whiteColor,
       appBar: AppBar(
@@ -57,20 +75,41 @@ class _DetailsScreenState extends State<DetailsScreen> {
             children: [
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
+
                 children: [
-                  Radio<bool>(
-                    value: true,
-                    groupValue: isSelected,
-                    activeColor: MyColors.floatActionButtonColor,
-                    onChanged: (value) {
+                  GestureDetector(
+                    onTap: () {
                       setState(() {
                         isSelected = !isSelected;
                       });
                     },
-                    fillColor: WidgetStatePropertyAll(
-                      MyColors.splachBackground,
+                    child: Container(
+                      margin: EdgeInsets.only(top: 15),
+                      width: 24,
+                      height: 24,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          color: MyColors.splachBackground,
+                          width: 2,
+                        ),
+                      ),
+                      child: isSelected
+                          ? Center(
+                              child: Container(
+                                width: 12,
+                                height: 12,
+                                decoration: BoxDecoration(
+                                  color: MyColors.splachBackground,
+
+                                  shape: BoxShape.circle,
+                                ),
+                              ),
+                            )
+                          : null,
                     ),
                   ),
+
                   const SizedBox(width: 8),
                   Expanded(
                     child: Column(
@@ -78,22 +117,17 @@ class _DetailsScreenState extends State<DetailsScreen> {
                       children: [
                         CustomTextFormFeild(
                           controller: taskTitle,
-                          hintStyle: MyFontStyle.font16Regular.copyWith(
-                            color: MyColors.floatActionButtonColor,
-                          ),
-                          enabledBorderColor: MyColors.whiteColor,
-                          focusedBorderColor: MyColors.hintColor,
+                          maxLines: null,
+                          enabledBorderColor: MyColors.splachBackground,
+                          focusedBorderColor: MyColors.splachBackground,
                         ),
 
-                        const SizedBox(height: 4),
+                        const SizedBox(height: 10),
                         CustomTextFormFeild(
+                          maxLines: null,
                           controller: taskDescription,
-
-                          hintStyle: MyFontStyle.font14Regular.copyWith(
-                            color: MyColors.greyTextColor,
-                          ),
-                          enabledBorderColor: MyColors.whiteColor,
-                          focusedBorderColor: MyColors.hintColor,
+                          enabledBorderColor: MyColors.splachBackground,
+                          focusedBorderColor: MyColors.splachBackground,
                         ),
                       ],
                     ),
@@ -104,6 +138,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                       AppDialog.showLoading(context);
                       FireBaseDatabase.updateTask(
                             TaskModel(
+                              isCompeleted: isSelected,
                               id: widget.taskModel.id,
                               title: taskTitle.text,
                               dateTime: widget.taskModel.dateTime,
@@ -128,22 +163,28 @@ class _DetailsScreenState extends State<DetailsScreen> {
               ),
               SizedBox(height: 34),
               RowOfDetailsScreenWidget(
-                onTap: () {},
+                onTap: () {
+                  AppFunctions.onTapTimer(context, (selectedDay) {
+                    widget.taskModel.dateTime = selectedDay;
+                  });
+                  setState(() {});
+                },
                 image: AssetConstant.timerIcon,
                 text1: 'Task Time :',
-                text2: 'Today ',
+                text2: formattedDate,
               ),
-              SizedBox(height: 27),
+
               RowOfDetailsScreenWidget(
-                image: AssetConstant.tagIcon,
-                text1: 'Task Category :',
-                text2: 'University ',
-              ),
-              SizedBox(height: 27),
-              RowOfDetailsScreenWidget(
+                onTap: () {
+                  AppFunctions.onTapFlag(context, (selectedPriority) {
+                    widget.taskModel.periority = selectedPriority;
+                    setState(() {});
+                  });
+                },
                 image: AssetConstant.flagIcon,
                 text1: 'Task Priority :',
-                text2: 'Default ',
+                text2: widget.taskModel.periority.toString(),
+                flagImage: AssetConstant.flagIcon,
               ),
               SizedBox(height: 95),
               InkWell(
