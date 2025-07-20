@@ -55,11 +55,9 @@ class TaskFunctions {
 
   static void showAddTaskBottomSheet({
     required BuildContext context,
-    // required int priority,
-    // required bool isSelected,
+
     required TextEditingController taskController,
     required TextEditingController descriptionController,
-    // required DateTime selectedDate,
     required TaskModel taskModel,
     required Function(int) updatePriority,
     required Function(DateTime) updateSelectedDate,

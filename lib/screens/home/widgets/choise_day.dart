@@ -39,6 +39,12 @@ class _TaskFilterDropdownState extends State<TaskFilterDropdown> {
         ),
         child: DropdownButtonHideUnderline(
           child: DropdownButton<String>(
+            dropdownColor: MyColors.whiteColor,
+            style: MyFontStyle.font12Regular.copyWith(
+              color: MyColors.splachBackground,
+            ),
+            borderRadius: BorderRadius.circular(12),
+
             value: widget.selectedOption,
             icon: SvgPicture.asset(AssetConstant.arrowDownIcon),
             items: options.map((e) {
