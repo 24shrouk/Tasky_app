@@ -40,7 +40,7 @@ class _TaskFilterDropdownState extends State<TaskFilterDropdown> {
         child: DropdownButtonHideUnderline(
           child: DropdownButton<String>(
             dropdownColor: MyColors.whiteColor,
-            style: MyFontStyle.font12Regular.copyWith(
+            style: MyFontStyle.font14Regular.copyWith(
               color: MyColors.splachBackground,
             ),
             borderRadius: BorderRadius.circular(12),

@@ -29,7 +29,7 @@ class _UserProfileState extends State<UserProfile> {
   bool isObscurePassword = true;
 
   User? user = FirebaseAuth.instance.currentUser;
-  late String name;
+  String name = "Shrouk";
   Future<String> getName() async {
     final snapshot = await FireBaseDatabase.collectionUser()
         .doc(user?.uid)
@@ -42,19 +42,18 @@ class _UserProfileState extends State<UserProfile> {
 
   Future<void> loadUserData() async {
     name = await getName();
-    userName.text =
-        (user?.displayName.toString() == null ||
-            user?.displayName?.isEmpty == true)
-        ? name
-        : user!.displayName.toString();
+    userName.text = name;
     email.text = user?.email ?? "Email Not found";
-    log('null');
-    setState(() {});
+
+    setState(() {
+      userName.text = user?.displayName ?? name;
+    });
   }
 
   @override
   void initState() {
     super.initState();
+    userName.text = name;
     loadUserData();
   }
 
@@ -164,7 +163,10 @@ class _UserProfileState extends State<UserProfile> {
                   SizedBox(height: 40),
                   GestureDetector(
                     onTap: () async {
-                      AppSharedPref.removeData(user!.uid);
+                      final uid = FirebaseAuth.instance.currentUser?.uid;
+                      if (uid != null) {
+                        await AppSharedPref.removeData(uid);
+                      }
                       await FirebaseAuth.instance.signOut();
                       Navigator.pushReplacementNamed(
                         context,
