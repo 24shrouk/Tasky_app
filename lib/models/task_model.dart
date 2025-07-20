@@ -1,31 +1,49 @@
 class TaskModel {
-  final String title;
-  final String description;
-  final int periority;
-  final DateTime dateTime;
+  String title;
+  String description;
+  int periority;
+  DateTime dateTime;
+  String? id;
+  bool isCompeleted;
 
   TaskModel({
+    this.id,
+    this.isCompeleted = false,
     required this.title,
     required this.description,
     required this.periority,
     required this.dateTime,
   });
-
-  static TaskModel fromJson(Map<String, dynamic> json) {
+  TaskModel updateIsComplete({bool? isCompleted}) {
     return TaskModel(
-      title: json['title'] as String,
-      description: json['description'] as String,
-      periority: json['periority'] as int,
-      dateTime: json['dateTime'] as DateTime,
+      dateTime: dateTime,
+      periority: periority,
+      id: id,
+      title: title,
+      description: description,
+      isCompeleted: isCompleted ?? isCompeleted,
     );
   }
 
-  static Map<String, dynamic> toJson(TaskModel task) {
+  factory TaskModel.fromJson(Map<String, dynamic> json) {
+    return TaskModel(
+      isCompeleted: json['isCompeleted'],
+      id: json['id'],
+      title: json['title'],
+      description: json['description'],
+      periority: json['periority'],
+      dateTime: DateTime.fromMillisecondsSinceEpoch(json['dateTime']),
+    );
+  }
+
+  Map<String, dynamic> toJson() {
     return {
-      'title': task.title,
-      'description':task.description,
-      'periority':task.periority,
-      'dateTime':task.dateTime,
+      'isCompeleted': isCompeleted,
+      'id': id,
+      'title': title,
+      'description': description,
+      'periority': periority,
+      'dateTime': dateTime.millisecondsSinceEpoch,
     };
   }
 }

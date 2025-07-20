@@ -35,7 +35,7 @@ abstract class Validator {
 
   static String? validateName(String? val) {
     if (val == null || val.isEmpty) {
-      return 'Nane cannot be empty';
+      return 'Name cannot be empty';
     } else {
       return null;
     }

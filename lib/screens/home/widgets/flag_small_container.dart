@@ -4,8 +4,8 @@ import 'package:tasky_app/core/utils/my_colors.dart';
 import 'package:tasky_app/core/utils/my_fonts.dart';
 
 class FlagSmallContainerWidget extends StatefulWidget {
-  const FlagSmallContainerWidget({super.key});
-
+  const FlagSmallContainerWidget({super.key, required this.priority});
+  final int priority;
   @override
   State<FlagSmallContainerWidget> createState() =>
       _FlagSmallContainerWidgetState();
@@ -26,7 +26,7 @@ class _FlagSmallContainerWidgetState extends State<FlagSmallContainerWidget> {
         children: [
           SvgPicture.asset('assets/icons/flag.svg'),
           Text(
-            "1",
+            widget.priority.toString(),
             style: MyFontStyle.font14Regular.copyWith(
               color: MyColors.blackTextColor,
             ),

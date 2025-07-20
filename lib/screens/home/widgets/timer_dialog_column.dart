@@ -3,10 +3,10 @@ import 'package:table_calendar/table_calendar.dart';
 import 'package:tasky_app/core/utils/my_colors.dart';
 import 'package:intl/intl.dart';
 import 'package:tasky_app/core/utils/my_fonts.dart';
-import 'package:tasky_app/widgets/cancel_and_save_buttons_widget.dart';
 
 class TimerAlertDialogWidget extends StatefulWidget {
-  const TimerAlertDialogWidget({super.key});
+  const TimerAlertDialogWidget({super.key, required this.onSave});
+  final Function(DateTime selectedDay) onSave;
 
   @override
   State<TimerAlertDialogWidget> createState() => _TimerAlertDialogWidgetState();
@@ -61,6 +61,7 @@ class _TimerAlertDialogWidgetState extends State<TimerAlertDialogWidget> {
             setState(() {
               _selectedDay = selectedDay;
               _focusedDay = focusedDay;
+              widget.onSave(_selectedDay!);
             });
           },
 
@@ -135,7 +136,6 @@ class _TimerAlertDialogWidgetState extends State<TimerAlertDialogWidget> {
           ),
         ),
         SizedBox(height: 40),
-        CancelAndSaveButtonsWidget(),
       ],
     );
   }

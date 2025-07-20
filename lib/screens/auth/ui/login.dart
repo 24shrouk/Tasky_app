@@ -13,6 +13,7 @@ import 'package:tasky_app/widgets/custom_text_field.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
+  static const String routeName = "LoginScreen";
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -28,6 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: MyColors.whiteColor,
       body: SingleChildScrollView(
         child: Padding(
@@ -100,7 +102,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   text: 'Log in',
                   onPressed: () async {
-                    AppDialog.showLoading();
+                    AppDialog.showLoading(context);
                     if (formKey.currentState!.validate()) {
                       await FireBaseUser.loginFireBase(
                             emailControler.text,
